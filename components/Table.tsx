@@ -23,11 +23,11 @@ export default function Table({ columns, rows }: Readonly<{
       </thead>
       <tbody className="divide-y divide-gray-200">
         {rows.map((row) => (
-          <tr key={row.id}>
+          <tr key={row.id} className="group hover:bg-primary transition">
             {columns.map((column) => (
               <td
                 key={column.name}
-                className="whitespace-nowrap py-4 px-3 text-sm text-gray-900"
+                className="whitespace-nowrap py-4 px-3 text-sm text-gray-900 group-hover:text-white"
               >
                 {column.render ? column.render(row) : row[column.name as string]}
               </td>

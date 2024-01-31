@@ -1,3 +1,5 @@
+import tailwindForms from '@tailwindcss/forms'
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -14,5 +16,7 @@ module.exports = {
         'secondary-light': 'rgb(249, 215, 220)',      },
     },
   },
-  plugins: [],
+  plugins: [
+    tailwindForms,
+  ],
 }
