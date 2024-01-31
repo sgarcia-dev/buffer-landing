@@ -8,6 +8,7 @@ import { InputHTMLAttributes, useEffect, useState } from "react";
 const tableColumns = [
   {
     name: 'avatar',
+    label: 'Avatar',
     render: (user: User) => (
       <Image src={`/avatars/${user.avatar}`} alt={user.name} width={40} height={40} className="rounded-full shadow-md" />
     )
@@ -79,16 +80,16 @@ export default function TeamList({ users }: Readonly<{ users: User[] }>) {
   }, [nameFilter]);
 
   return (
-    <section className="py-20">
+    <section className="py-40">
       <div className="container mx-auto px-5">
         <h2 className="text-center font-bold">Meet the Team</h2>
-        <div className="grid grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
           <TextInput label="Name" name="name" value={nameFilter} onChange={e => setNameFilter(e.target.value)} />
           <SelectInput label="Team" name="team" value={teamFilter} onChange={e => setTeamFilter(e.target.value)} options={teamOptions} />
           <SelectInput label="Role" name="role" value={roleFilter} onChange={e => setRoleFilter(e.target.value)} options={roleOptions} />
           <SelectInput label="Country" name="country" value={countryFilter} onChange={e => setCountryFilter(e.target.value)} options={countryOptions} />
         </div>
-        <div className="mt-20 max-h-[80vh] overflow-y-scroll">
+        <div className="mt-20 max-h-[50vh] overflow-y-scroll overflow-x-auto">
           <Table rows={filteredUsers} columns={tableColumns} />
         </div>
       </div>
