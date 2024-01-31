@@ -1,6 +1,3 @@
-
-// import Image from 'next/image'
-
 import Table from "@/components/Table"
 
 export default async function SalaryInsights({
@@ -8,11 +5,9 @@ export default async function SalaryInsights({
 }: Readonly<{
   users: User[]
 }>) {
-  debugger
   const salaryByCountry = aggregateSalary(users, 'country')
   const salaryByTeam = aggregateSalary(users, 'team')
   const salaryByRole = aggregateSalary(users, 'role')
-  console.log({salaryByCountry, salaryByTeam, salaryByRole})
 
   return (
     <section className="py-40 bg-primary-light">
@@ -21,8 +16,9 @@ export default async function SalaryInsights({
         <div className="grid lg:grid-cols-3 gap-8 mt-10">
           <div>
             <h5 className="font-bold">By Country</h5>
-            <div className="bg-white rounded-lg p-4 max-h-[50vh] overflow-y-auto overflow-x-auto">
+            <div className="bg-white rounded-lg p-4 max-h-[50vh] overflow-y-auto overflow-x-auto" tabIndex={0}>
               <Table
+                caption="Salary table for Buffer.com employees grouped by country"
                 columns={[
                   {
                     name: 'label',
@@ -39,8 +35,9 @@ export default async function SalaryInsights({
           </div>
           <div>
             <h5 className="font-bold">By Team</h5>
-            <div className="bg-white rounded-lg p-4 max-h-[50vh] overflow-y-auto overflow-x-auto">
+            <div className="bg-white rounded-lg p-4 max-h-[50vh] overflow-y-auto overflow-x-auto" tabIndex={0}>
               <Table
+                caption="Salary table for Buffer.com employees grouped by team"
                 columns={[
                   {
                     name: 'label',
@@ -57,8 +54,9 @@ export default async function SalaryInsights({
           </div>
           <div>
             <h5 className="font-bold">By Role</h5>
-            <div className="bg-white rounded-lg p-4 max-h-[50vh] overflow-y-auto overflow-x-auto">
+            <div className="bg-white rounded-lg p-4 max-h-[50vh] overflow-y-auto overflow-x-auto" tabIndex={0}>
               <Table
+                caption="Salary table for Buffer.com employees grouped by role"
                 columns={[
                   {
                     name: 'label',

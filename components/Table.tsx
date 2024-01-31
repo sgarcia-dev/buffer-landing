@@ -1,13 +1,15 @@
-export default function Table({ columns, rows }: Readonly<{
+export default function Table({ columns, rows, caption }: Readonly<{
   columns: {
     label?: string;
     name?: string;
     render?: (row: any) => any;
   }[];
   rows: any[];
+  caption?: string;
 }>) {
   return (
     <table className="min-w-full divide-y divide-gray-300">
+      {!!caption && <caption className="sr-only">{caption}</caption>}
       <thead>
         <tr>
           {columns.map((column) => (

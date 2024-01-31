@@ -21,7 +21,7 @@ export default async function TeamDistribution({
     <section className="py-20 bg-primary">
       <div className="container px-5 mx-auto">
         <h3 className="font-bold text-white">We are a <i className="font-normal">Global</i> team</h3>
-        <div className="flex flex-nowrap overflow-x-scroll gap-8 mt-8">
+        <div className="flex flex-nowrap overflow-x-scroll gap-8 mt-8" tabIndex={0}>
           {countries.map(([country, users]) => (
           <div key={country} className="bg-white border-gray-300 border shadow-lg rounded-xl p-4 min-w-96">
               <h4 className="text-nowrap font-bold">{country}</h4>

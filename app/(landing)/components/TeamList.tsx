@@ -89,8 +89,8 @@ export default function TeamList({ users }: Readonly<{ users: User[] }>) {
           <SelectInput label="Role" name="role" value={roleFilter} onChange={e => setRoleFilter(e.target.value)} options={roleOptions} />
           <SelectInput label="Country" name="country" value={countryFilter} onChange={e => setCountryFilter(e.target.value)} options={countryOptions} />
         </div>
-        <div className="mt-20 max-h-[50vh] overflow-y-scroll overflow-x-auto">
-          <Table rows={filteredUsers} columns={tableColumns} />
+        <div className="mt-20 max-h-[50vh] overflow-y-scroll overflow-x-auto" tabIndex={0}>
+          <Table rows={filteredUsers} columns={tableColumns} caption="List of team members for Buffer.com" />
         </div>
       </div>
     </section>
