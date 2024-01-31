@@ -1,4 +1,5 @@
 import { getUsers } from '@/data/users'
+import Image from 'next/image'
 
 export default async function TeamDistribution({
   users
@@ -18,16 +19,21 @@ export default async function TeamDistribution({
   countries.sort(([, usersA], [, usersB]) => usersB.length - usersA.length)
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-primary">
       <div className="container px-5 mx-auto">
-        <h3 className="font-bold">We are a <i className="font-normal">Global</i> team</h3>
+        <h3 className="font-bold text-white">We are a <i className="font-normal">Global</i> team</h3>
         <div className="flex flex-nowrap overflow-x-scroll gap-8 mt-8">
           {countries.map(([country, users]) => (
-          <div key={country} className="bg-primary-light shadow-lg rounded-xl p-4 min-w-64">
+          <div key={country} className="bg-white border-gray-300 border shadow-lg rounded-xl p-4 min-w-96">
               <h4 className="text-nowrap font-bold">{country}</h4>
-              <p>
-                {users.length > 3 ? `${users[0].name}, ${users[1].name}, ${users[2].name}, and ${users.length - 3} more ...` : users.map((user) => user.name).join(', ')}
-              </p>
+              <div className="flex gap-2 flex-wrap">
+                {users.slice(0, 6).map((user) => (
+                  <Image key={user.name} src={`/avatars/${user.avatar}`} alt={user.name} width={40} height={40} className="rounded-full shadow-md" />
+                ))}
+              </div>
+              {users.length > 6 && (
+                <p className="text-sm text-gray-500 mt-2">+ {users.length - 6} more</p>
+              )}
             </div>
           ))}
         </div>
